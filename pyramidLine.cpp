@@ -111,7 +111,7 @@ float calc_volume_pyramid(float base, float height) {
 }
 
 
-float  main_volume_square_pyramid() {
+void  main_volume_square_pyramid() {
     // declare variables
     std::string baseStr, heightStr;
     float baseFloat, heightFloat, volumePyramid;
