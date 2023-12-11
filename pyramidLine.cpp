@@ -1,33 +1,32 @@
 // Copyright (c) 2023 Julien Lamoureux All rights reserved.
 
 // Created By: Julien Lamoureux
-// Date: December 6, 2023
-// This program display an equation of a line or the volume of a square pyramid
+// Date: December 10, 2023
+// This program displays an equation of a line or the volume of a square pyramid
 
 #include <iostream>
 #include <cmath>
 #include <iomanip>
 
-float calc_slope(float x1, float x2, float y1, float y2) {
+float CalcSlope(float x1, float x2, float y1, float y2) {
     // return (y2-y1)/(x2-x1)
     return (y2-y1)/(x2-x1);
 }
 
-
-float calc_y_int(float x1, float y1, float slope) {
+float CalcYInt(float x1, float y1, float slope) {
     // return y1-(slope*x1)
     return y1-(slope*x1);
 }
 
 
-void main_equation_of_a_line() {
+void MainEquationOfALine() {
     // declare variables
     std::string xPoint1Str, xPoint2Str, yPoint1Str, yPoint2Str;
     float xPoint1Float, xPoint2Float, yPoint1Float, yPoint2Float, slope, yInt;
 
     // get all the x and y points
     std::cout << "This program shows";
-    std::cout << "the equation of a line using 2 points on a graph."
+    std::cout << " the equation of a line using 2 points on a graph."
     << std::endl;
     std::cout << "Enter your first x point.";
     std::cin >> xPoint1Str;
@@ -55,11 +54,11 @@ void main_equation_of_a_line() {
                     yPoint2Float = std::stof(yPoint2Str);
 
                     // call the calc_slope function
-                    slope = calc_slope(xPoint1Float, xPoint2Float,
+                    slope = CalcSlope(xPoint1Float, xPoint2Float,
                     yPoint1Float, yPoint2Float);
 
                     // call the calc_y_int function
-                    yInt = calc_y_int(xPoint1Float, yPoint1Float, slope);
+                    yInt = CalcYInt(xPoint1Float, yPoint1Float, slope);
 
                     // if yInt < 0, show -yInt
                     if (yInt < 0) {
@@ -105,20 +104,20 @@ void main_equation_of_a_line() {
 }
 
 
-float calc_volume_pyramid(float base, float height) {
+float CalcVolumePyramid(float base, float height) {
     // return (base^2)*(height/3)
     return (pow(base, 2)) * (height / 3);
 }
 
 
-void  main_volume_square_pyramid() {
+void  MainVolumeSquarePyramid() {
     // declare variables
     std::string baseStr, heightStr;
     float baseFloat, heightFloat, volumePyramid;
 
     // get the base and height
     std::cout << "This program displays the volume of a square";
-    std::cout << "pyramid given the base edge and the height "
+    std::cout << " pyramid given the base edge and the height "
     << std::endl;
     std::cout
     << "Enter the base edge: ";
@@ -136,7 +135,7 @@ void  main_volume_square_pyramid() {
             heightFloat = std::stof(heightStr);
 
             // call the calc_volume_pyramid() function
-            volumePyramid = calc_volume_pyramid(baseFloat, heightFloat);
+            volumePyramid = CalcVolumePyramid(baseFloat, heightFloat);
 
             // display the volume of the pyramid
             std::cout << "The volume of your square pyramid is "
@@ -147,13 +146,13 @@ void  main_volume_square_pyramid() {
             // if the height cannot become a float, tell the user to enter one
             std::cout
             << heightStr << " is not a valid floating";
-            std::cout << "decimal number, please enter one" << std::endl;
+            std::cout << " decimal number, please enter one" << std::endl;
         }
         } catch (std::invalid_argument) {
             // if the base cannot become a float, tell the user to enter one
             std::cout
             << baseStr << " is not a valid floating";
-            std::cout << "decimal number, please enter one" << std::endl;
+            std::cout << " decimal number, please enter one" << std::endl;
         }
 }
 
@@ -165,15 +164,15 @@ int main() {
     std::cout << "This program writes the equation of a line from";
     std::cout << " two points on a graph (press 1 for this option),";
     std::cout << " or displays the volume of a pyramid with a square";
-    std::cout << "base given the base and height (press 2 for this option).";
+    std::cout << " base given the base and height (press 2 for this option).";
     std::cin >> userChoice;
 
     // if user choice is 1, then call the main_equation_of_a_line function
     if (userChoice == "1") {
-        main_equation_of_a_line();
+        MainEquationOfALine();
     } else if (userChoice == "2") {
         // otherwise, if user choice is 2, call  main_volume_square_pyramid()
-        main_volume_square_pyramid();
+        MainVolumeSquarePyramid();
     } else {
         // otherwise, tell the user to enter 1 or 2
         std::cout << "Please enter 1 or 2 for your selection." << std::endl;
